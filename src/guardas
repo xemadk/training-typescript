@@ -1,0 +1,88 @@
+interface BookingProviderA {
+  id: string;
+  fullname: string;
+  price: number;
+  entryDate: Date;
+  departureDate: Date;
+}
+
+interface BookingProviderB {
+  _id: string;
+  fullname: string;
+  price: number;
+  arrival: Date;
+  departure: Date;
+}
+
+const bookingA: BookingProviderA = {
+  id: "234",
+  fullname: "Jose Perez",
+  price: 300,
+  entryDate: new Date(),
+  departureDate: new Date()
+};
+
+const bookingB: BookingProviderB = {
+  _id: "556",
+  fullname: "Paco Lopez",
+  price: 300,
+  arrival: new Date(),
+  departure: new Date()
+};
+
+const getFullName = (booking: BookingProviderA | BookingProviderB): string =>
+  booking.fullname;
+
+const getId = (booking: BookingProviderA | BookingProviderB): string => {
+  if ("id" in booking) {
+    return booking.id;
+  } else if ("_id" in booking) {
+    return booking._id;
+  }
+};
+
+const getFullNameAndId = (
+  booking: BookingProviderA | BookingProviderB
+): string => {
+  return getFullName(booking) + getId(booking);
+};
+
+//Guardas property in
+const getArrival1 = (booking: BookingProviderA | BookingProviderB): Date => {
+  if ("entryDate" in booking) {
+    return booking.entryDate;
+  } else if ("arrival" in booking) {
+    return booking.arrival;
+  }
+};
+
+//Guardas property typeof, solo sirve para typos simples no para compuestos o interfaces.
+// const getArrival2 = (booking : BookingProviderA | BookingProviderB): Date => {
+//   if (typeof booking === "object"){
+//     return booking.entryDate;
+//   }
+// }
+
+//Guardas instanceof it is only valid for classes instances.
+// const getArrival3 = (booking : BookingProviderA | BookingProviderB): Date => {
+//   // Instanceof requires a class object. Is not valid with an interface.
+//   if (booking instanceof BookingProviderA){
+//     return booking.entryDate;
+//   }
+//   else{
+//     return booking.arrival;
+//   }
+// }
+
+/*
+const isBookingA = (b: BookingProviderA | BookingProviderB):b is BookingProviderA => {
+  return (b As BookingProviderA).entryDate !==undefined;
+}
+*/
+
+console.log(typeof bookingA);
+
+console.log(getFullName(bookingA));
+console.log(getFullNameAndId(bookingA));
+console.log(getFullName(bookingB));
+console.log(getFullNameAndId(bookingB));

@@ -1,0 +1,34 @@
+class SlotMachine {
+  private ruleta1: boolean = false;
+  private ruleta2: boolean = false;
+  private ruleta3: boolean = false;
+
+  private wonCoins: number = 0;
+
+  play() {
+    this.ruleta1 = this.playRuleta();
+    this.ruleta2 = this.playRuleta();
+    this.ruleta3 = this.playRuleta();
+
+    if (this.ruleta1 && this.ruleta2 && this.ruleta3) {
+      this.wonCoins++;
+      return console.log(`You won ${this.wonCoins} coins!!`);
+    } else {
+      this.wonCoins--;
+      return console.log("Good luck next time!");
+    }
+  }
+
+  private playRuleta(): boolean {
+    const x = Math.random() >= 0.1;
+    console.log(x);
+    return x;
+  }
+}
+
+const machine = new SlotMachine();
+machine.play();
+machine.play();
+machine.play();
+machine.play();
+machine.play();

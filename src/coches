@@ -1,0 +1,31 @@
+
+
+
+interface Coche {
+  marca : string;
+  matricula : string;
+  color : string;
+  puertas : number;
+}
+
+
+const coches: Coche[] = [
+  {
+    marca: "Honda",
+    matricula: "FSB7056",
+    color: "Blanco",
+    puertas: 5
+  },
+  {
+    marca: "Seat",
+    matricula: "LRC4589",
+    color: "Blanco",
+    puertas: 3
+  },
+];
+
+const logCoche = ({ marca, matricula }: Coche) => {
+  console.log(`  - ${marca}, ${matricula}`);
+};
+
+coches.forEach(logCoche);

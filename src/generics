@@ -1,0 +1,11 @@
+function first<T>(list: T[]): T {
+  return list[0];
+}
+
+const firstArrow = <T>(list: T[]): T => list[0];
+
+const res1 = firstArrow<string>(["hello", "pepino"]);
+console.log(res1);
+
+const res2 = firstArrow<any>([false, "pepino", 3]);
+console.log(res2);

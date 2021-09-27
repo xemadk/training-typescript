@@ -1,0 +1,10 @@
+const buildMessage = (
+  cadena: string,
+  value: number,
+  messages: string[] = []
+) => {
+  messages?.map((m) => console.log(m));
+  console.log(`${cadena} ${value}`);
+};
+
+buildMessage("Hola", 5);

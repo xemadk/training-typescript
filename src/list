@@ -1,0 +1,38 @@
+class CustomList {
+  private array: object[] = [];
+
+  add(newElement: any): void {
+    this.array = this.array.concat(newElement);
+  }
+
+  delete(index : number): void{
+    this.array = this.array.filter(e=> e!== this.array[index]);
+  }
+
+  get(index: number): any {
+    return this.array[index];
+  }
+
+  count(): number {
+    return this.array.length;
+  }
+}
+
+const list = new CustomList();
+list.add({ id: 2 });
+list.add({ name: "joan" });
+list.add({ id: "89898" });
+
+const x = list.get(0);
+console.log(x.id);
+
+const y = list.get(1);
+console.log(y.name);
+
+const len = list.count();
+console.log(len);
+
+console.log(list.get(0));
+list.delete(0);
+console.log(list.get(0));
+console.log(list.count());

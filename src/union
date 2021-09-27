@@ -1,0 +1,13 @@
+//Union
+
+type A = "A" | "a";
+type B = "B"|"b";
+
+
+type AB = A & B;
+
+
+const saySomething = (message : string | number) => `Say ${message}`;
+
+
+console.log(saySomething("ASa"))
